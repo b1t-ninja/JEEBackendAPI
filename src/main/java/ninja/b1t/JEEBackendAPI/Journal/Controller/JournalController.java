@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// If we refactor and add service, then service has all those methods just called differently
 @RestController
 public class JournalController {
     private final JournalRepository repository;
