@@ -9,9 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 
-// Initialises DB with data, in production, we wont need this
+// Initialises DB with data; in production, we won't need this
 @Configuration
 public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
@@ -20,9 +21,8 @@ public class LoadDatabase {
     CommandLineRunner initDatabase(JournalRepository repository) {
 
         return args -> {
-            log.info("Preloading {}", repository.save(new JournalEntry("Today was a very nice day, I am happy I experience it", new Date(), Mood.GOOD)));
-            // log.info("Preloading " + repository.save(new JournalEntry("Today was a very nice day, I am happy I experience it", new Date(), Mood.GOOD)));
-            log.info("Preloading {}", repository.save(new JournalEntry("I got a new Dog today, feeling over the moon 🌕", new Date(20), Mood.VERY_GOOD)));
+            log.info("Preloading {}", repository.save(new JournalEntry("Today was a very nice day, I am happy I experience it", ZonedDateTime.now(), Mood.GOOD)));
+            log.info("Preloading {}", repository.save(new JournalEntry("I got a new Dog today, feeling over the moon", ZonedDateTime.now(), Mood.VERY_GOOD)));
         };
     }
 }

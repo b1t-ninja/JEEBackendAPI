@@ -1,5 +1,6 @@
 package ninja.b1t.JEEBackendAPI.Journal.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -8,7 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Getter
@@ -19,13 +20,14 @@ public class JournalEntry {
     private @Id
     @GeneratedValue Long id;
     private String content;
-    private Date created;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+    private ZonedDateTime created;
     private Mood mood;
 
     public JournalEntry() {
     }
 
-    public JournalEntry(String content, Date created, Mood mood) {
+    public JournalEntry(String content, ZonedDateTime created, Mood mood) {
         this.content = content;
         this.created = created;
         this.mood = mood;
