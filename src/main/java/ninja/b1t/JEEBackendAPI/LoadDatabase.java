@@ -21,8 +21,8 @@ public class LoadDatabase {
     CommandLineRunner initDatabase(JournalRepository repository) {
 
         return args -> {
-            log.info("Preloading {}", repository.save(new JournalEntry("Today was a very nice day, I am happy I experience it", ZonedDateTime.now(), Mood.GOOD)));
-            log.info("Preloading {}", repository.save(new JournalEntry("I got a new Dog today, feeling over the moon", ZonedDateTime.now(), Mood.VERY_GOOD)));
+            log.info("Preloading {}", repository.save(new JournalEntry("This is a beautiful day", ZonedDateTime.now(), Mood.GOOD)));
+            log.info("Preloading {}", repository.save(new JournalEntry("I love my dog", ZonedDateTime.now(), Mood.VERY_GOOD)));
         };
     }
 }
